@@ -1,0 +1,100 @@
+.bd-navbar {
+	z-index: 1020;
+    background-color: rgba(255,255,255,0.75);
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05), inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+.btn-bd-light {
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+.btn-bd-light:hover,.btn-bd-light:active {
+    color: #7952b3;
+    background-color: #fff;
+    border-color: #7952b3;
+}
+
+.btn-bd-light:focus {
+    box-shadow: 0 0 0 3px rgba(121,82,179,0.25)
+}
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group > input,
+.form-label-group > label,
+.form-label-group > textarea {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  color: #495057;
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder,
+.form-label-group textarea::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder,
+.form-label-group textarea::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder,
+.form-label-group textarea::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder,
+.form-label-group textarea::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown),
+.form-label-group textarea:not(:-moz-placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:placeholder-shown),
+.form-label-group textarea:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) ~ label,
+.form-label-group textarea:not(:-moz-placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label,
+.form-label-group textarea:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #7952b3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(121,82,179,0.25)
+}

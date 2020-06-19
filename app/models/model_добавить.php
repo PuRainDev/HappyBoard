@@ -35,7 +35,7 @@ class model_добавить implements app\core\model
 				return $data;
 			}
 			
-			$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfai6YZAAAAAFSY0yxgTwtTRPt19PIZ-9hhRLHI&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
+			$response=file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$GLOBALS['config']['recaptcha_secret_key'].'&response='.$_POST['g-recaptcha-response'].'&remoteip='.$_SERVER['REMOTE_ADDR']);
 			$g_response = json_decode($response);
 			if($g_response->success!==true) {
 				$data['msg'] = '<div class="alert alert-danger" role="alert">

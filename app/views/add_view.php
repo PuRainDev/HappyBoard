@@ -26,7 +26,7 @@
     <label for="inputContacts">Как с вами связаться</label>
   </div>
 
-  <div class="g-recaptcha" data-sitekey="6Lfai6YZAAAAADGNvzzeblcIF_8rmWuMH1VVfGPM"></div>
+  <div class="g-recaptcha" data-sitekey="<?php echo $GLOBALS['config']['recaptcha_public_key']; ?>"></div>
   <br>
   <button class="btn btn-lg btn-bd-light btn-block" type="submit" value="Submit">Опубликовать</button>
 </form>

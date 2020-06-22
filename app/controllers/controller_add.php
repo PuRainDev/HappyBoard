@@ -1,10 +1,11 @@
 <?php
-class controller_добавить extends app\core\controller
+namespace app\controllers;
+
+class controller_add extends \app\core\controller
 {
 	function __construct() {
-		$this->model = new Model_добавить();
-		$this->view = new app\core\View();
-
+		$this->model = new \app\models\model_add();
+		$this->view = new \app\core\View();
 	}
 	function action_index($data) {
 		$result = $this->model->get_data($data);

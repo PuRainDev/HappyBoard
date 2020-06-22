@@ -1,13 +1,18 @@
 <?php
-class model_main implements app\core\model
+namespace app\models;
+
+class model_main implements \app\core\model
 {
 	public function get_data($data)
 	{	
-		$dbhost = $GLOBALS['config']['dbhost'];
-		$dbuser = $GLOBALS['config']['dbuser'];
-		$dbpass = $GLOBALS['config']['dbpass'];
-		$db = $GLOBALS['config']['db'];
-		$mysqli = new mysqli($dbhost, $dbuser, $dbpass,$db);
+		$config = \app\core\config::getInstance('config.ini');
+		$db_config = $config::get_db_data();
+		
+		$dbhost = $db_config['dbhost'];
+		$dbuser = $db_config['dbuser'];
+		$dbpass = $db_config['dbpass'];
+		$db = $db_config['db'];
+		$mysqli = new \mysqli($dbhost, $dbuser, $dbpass,$db);
 
 		if ($mysqli -> connect_errno) {
 			echo "Failed to connect to MySQL: " . $mysqli -> connect_error;

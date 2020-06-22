@@ -5,46 +5,53 @@ based on https://habr.com/ru/post/150267/
 
 */
 namespace app\core;
+
+use app\controllers;
+
 class route
 {
-	function start()
+	public $routes = array(
+		'404'=>'controller_404',
+		'main'=>'controller_main',
+		'добавить'=>'controller_add',
+		'о_проекте'=>'controller_about',
+		'объявления'=>'controller_ads'
+	);
+	
+	public function start()
 	{
-		$controller_name = 'Main';
+		$controller_name = 'main';
 		$data = '';
 		
-		$routes = explode('/', $_SERVER['REQUEST_URI']);
+		$parsed = explode('/', $_SERVER['REQUEST_URI']);
 
-		if ( !empty($routes[1]) ) {	
-			$controller_name = $this->sanitaze_params($routes[1]);
+		if ( !empty($parsed[1]) ) {	
+			$controller_name = $this->sanitaze_params($parsed[1]);
 		}
 		
-		if ( !empty($routes[2]) ) {
-			$data = $this->sanitaze_params($routes[2]);
+		if ( !empty($parsed[2]) ) {
+			$data = $this->sanitaze_params($parsed[2]);
 		}
 
-		$model_name = 'model_'.$controller_name;
-		$controller_name = 'controller_'.$controller_name;
-
-		$model_file = strtolower($model_name).'.php';
-		if(file_exists("app/models/".$model_file)) {
-			require "app/models/".$model_file;
-		}
-
-		$controller_file = strtolower($controller_name).'.php';
-		if(file_exists("app/controllers/".$controller_file)) {
-			require "app/controllers/".$controller_file;
+		if (array_key_exists($controller_name, $this->get_routes())) {
+			$controller_name = $this->get_routes($controller_name);
 		} else {
 			$controller_name = 'controller_404';
-			$data = '';
-			require "app/controllers/controller_404.php";
+			$data = '';		
 		}
 		
-		$controller = new $controller_name;
+		$full_class_name = '\\app\\controllers\\'.$controller_name;
+		$controller = new $full_class_name;
 		
 		$controller->action_index($data);
 	
 	}
-	 private function sanitaze_params($text) {
-		return explode('?',urldecode($text))['0'];
-	 }
+	
+	private function sanitaze_params($text) {
+		return strtolower(explode('?',urldecode($text))['0']);
+	}
+	
+	private function get_routes($route = "") {
+		return empty($route) ? $this->routes: $this->routes[$route];
+	}
 }
